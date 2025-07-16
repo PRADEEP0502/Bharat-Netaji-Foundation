@@ -18,8 +18,8 @@
       <span class="title">Bharat Netaji Foundation</span>
     </div>
 
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-<ul id="navMenu" class="nav-links">
+<button class="menu-toggle" type="button" onclick="toggleMenu()" aria-label="Toggle navigation menu">☰</button>
+ <ul id="navMenu" class="nav-links">
   <li><a href="#home">Home</a></li>
   <li><a href="#about">About</a></li>
   <li><a href="#work">Our Work</a></li>
@@ -27,6 +27,7 @@
   <li><a href="#join">Join Us</a></li>
   <li><a href="#netaji-slider">Gallery</a></li>
   <li><a href="#contact">Contact</a></li>
+  <li><a href="#donation">Donate</a></li>
 </ul>
   </div>
   </div>
@@ -37,7 +38,8 @@
     <div class="overlay"></div>
     <div class="hero-content" data-aos="fade-down">
       <h1>Let’s unite with one vision</h1>
-      <p>and stand like an unshakable rock.</p>
+      <p>Bharat Netaji Foundation was established with the core mission of carrying forward the patriotism, sacrifice, and leadership qualities of Netaji Subhas Chandra Bose to the younger generation. The foundation is actively involved in promoting progress in education, social welfare, and national unity. It aims to transform youth into self-aware and socially responsible citizens, encouraging them to contribute to the service of the nation through active participation and commitment.
+</p>
       <a href="#join" class="btn" data-aos="zoom-in">Join the Mission</a>
     </div>
   </section>
@@ -157,6 +159,19 @@
     bharatnetajifoundation@gmail.com</p>
   </div>
 </section>
+<section id="donation" class="donation-section" data-aos="fade-up">
+  <h2>Donation Details</h2>
+  <p>Please find the account details to make your donation:</p>
+
+  <div class="donation-box">
+    <p><strong>Bank Name:</strong> State Bank of India</p>
+    <p><strong>Account Number:</strong> 1234567890</p>
+    <p><strong>IFSC Code:</strong> SBIN0001234</p>
+    <p><strong>Account Name:</strong> Bharat Netaji Foundation</p>
+  </div>
+
+  <p class="thank-you">Thank you for your generous support! 🙏</p>
+</section>
 
   <script src="js/script.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -164,9 +179,15 @@
 
   <script>
 // Hamburger Menu Toggle
-function toggleMenu() {
-  document.getElementById("navMenu").classList.toggle("show");
-}
+// Toggle the nav menu on small screens
+  document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.getElementById("menuToggle");
+    const navMenu = document.getElementById("navMenu");
+
+    menuToggle.addEventListener("click", function () {
+      navMenu.classList.toggle("show");
+    });
+  });
 
 // Image Slider Logic
 const sliderImages = [

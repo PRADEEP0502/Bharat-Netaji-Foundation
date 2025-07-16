@@ -79,11 +79,13 @@ a {
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-  .menu-toggle {
-    display: block;
-  }
+/* For Mobile Dropdown */
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
 
+@media (max-width: 768px) {
   .nav-links {
     display: none;
     flex-direction: column;
@@ -91,17 +93,9 @@ a {
     position: absolute;
     top: 60px;
     right: 20px;
-    padding: 15px 25px;
+    padding: 10px 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    z-index: 1000;
-  }
-
-  .nav-links li a {
-    color: #002D72;
-    padding: 10px 0;
-    font-weight: bold;
-    display: block;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   }
 
   .nav-links.show {
@@ -331,4 +325,43 @@ footer {
   .hero-content p {
     font-size: 1rem;
   }
+}
+.donation-section {
+  background: #f5faff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.donation-section h2 {
+  color: #002D72;
+  margin-bottom: 10px;
+}
+
+.donation-box {
+  background: white;
+  display: inline-block;
+  text-align: left;
+  padding: 25px 30px;
+  margin: 20px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  font-size: 16px;
+  max-width: 400px;
+  line-height: 1.8;
+}
+
+.donation-box p {
+  margin: 8px 0;
+  color: #333;
+}
+
+.donation-box strong {
+  color: #0f2b66;
+}
+
+.thank-you {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #008000;
+  font-size: 18px;
 }
