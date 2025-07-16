@@ -12,23 +12,25 @@
 <body>
   <header>
   <nav class="navbar">
-    <div class="navbar-content">
-      <div class="logo">
-        <img src="images/Logo.png" alt="Logo" class="logo-img" />
-        <span class="title">Bharat Netaji Foundation</span>
-      </div>
-      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-      <ul id="navMenu" class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#work">Our Work</a></li>
-        <li><a href="#team">Our Team</a></li>
-        <li><a href="#join">Join Us</a></li>
-        <li><a href="#netaji-slider">Gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+  <div class="navbar-content">
+    <div class="logo">
+      <img src="images/Logo.png" alt="Logo" class="logo-img" />
+      <span class="title">Bharat Netaji Foundation</span>
     </div>
-  </nav>
+
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<ul id="navMenu" class="nav-links">
+  <li><a href="#home">Home</a></li>
+  <li><a href="#about">About</a></li>
+  <li><a href="#work">Our Work</a></li>
+  <li><a href="#team">Our Team</a></li>
+  <li><a href="#join">Join Us</a></li>
+  <li><a href="#netaji-slider">Gallery</a></li>
+  <li><a href="#contact">Contact</a></li>
+</ul>
+  </div>
+  </div>
+</nav>
 </header>
 
   <section id="home" class="hero">
@@ -61,7 +63,7 @@
 </section>
 
 <section id="focus" data-aos="fade-up">
-  <h2>Key Focus Areas</h2>
+  <h2>Vision</h2>
   <ul>
     <li>National unity and patriotism</li>
     <li>Social welfare and public support</li>
@@ -126,21 +128,11 @@
     <a href="https://forms.gle/your-google-form-link" target="_blank" class="btn">Fill Google Form</a>
   </section>
 
-  <section id="netaji-slider" data-aos="fade-up">
+ <section id="netaji-slider" data-aos="fade-up">
   <h2>Our Inspiration – Netaji</h2>
-  <div class="slider-container">
-    <div class="slider-track" id="sliderTrack">
-      <img src="images/netaji1.jpeg" alt="Netaji 1" />
-      <img src="images/netaji2.jpeg" alt="Netaji 2" />
-      <img src="images/netaji3.jpeg" alt="Netaji 3" />
-      <img src="images/netaji4.jpeg" alt="Netaji 4" />
-      <img src="images/netaji5.jpeg" alt="Netaji 5" />
-      <img src="images/netaji6.jpeg" alt="Netaji 6" />
-      <img src="images/netaji7.jpeg" alt="Netaji 7" />
-      <img src="images/netaji8.jpeg" alt="Netaji 8" />
-      <img src="images/netaji9.jpeg" alt="Netaji 9" />
-      <img src="images/netaji10.jpeg" alt="Netaji 10" />
-      <!-- Add more images as needed -->
+  <div class="slider-wrapper">
+    <div class="slider-track">
+      <!-- Images added dynamically via JS -->
     </div>
     <div class="slider-controls">
       <button onclick="prevSlide()">&#10094;</button>
@@ -171,62 +163,60 @@
   <script>AOS.init();</script>
 
   <script>
-  function toggleMenu() {
-    document.getElementById("navMenu").classList.toggle("show");
-  }
-
-  let currentSlide = 0;
-const slides = document.querySelectorAll("#sliderTrack img");
-
-function showSlide(index) {
-  const totalSlides = slides.length;
-  if (index >= totalSlides) {
-    currentSlide = 0;
-  } else if (index < 0) {
-    currentSlide = totalSlides - 1;
-  } else {
-    currentSlide = index;
-  }
-
-  slides.forEach((slide, index) => {
-    slide.style.display = index === currentSlide ? "block" : "none";
-  });
+// Hamburger Menu Toggle
+function toggleMenu() {
+  document.getElementById("navMenu").classList.toggle("show");
 }
 
+// Image Slider Logic
+const sliderImages = [
+  "images/netaji1.jpeg",
+  "images/netaji2.jpeg",
+  "images/netaji3.jpeg",
+  "images/netaji4.jpeg",
+  "images/netaji5.jpeg",
+  "images/netaji6.jpeg",
+  "images/netaji7.jpeg",
+  "images/netaji8.jpeg",
+  "images/netaji9.jpeg",
+  "images/netaji10.jpeg"
+];
+
+let currentSlide = 0;
+const sliderTrack = document.querySelector('.slider-track');
+
+// Function to update image position (left-to-right motion)
+function updateSlider() {
+  const slideWidth = document.querySelector('.slider-img').clientWidth;
+  sliderTrack.style.transform = `translateX(-${currentSlide * slideWidth}px)`;
+}
+
+// Manual Controls
 function nextSlide() {
-  showSlide(currentSlide + 1);
+  currentSlide = (currentSlide + 1) % sliderImages.length;
+  updateSlider();
 }
 
 function prevSlide() {
-  showSlide(currentSlide - 1);
+  currentSlide = (currentSlide - 1 + sliderImages.length) % sliderImages.length;
+  updateSlider();
 }
 
-// Initialize the slider by showing the first slide
-showSlide(currentSlide);
+// Autoplay (optional)
+setInterval(nextSlide, 4000);
 
-  </script>
-  <script>
-let currentIndex = 0;
-const images = document.querySelectorAll('#sliderTrack img');
-
-function showSlide(index) {
-  images.forEach((img, i) => {
-    img.style.display = i === index ? 'block' : 'none';
+// Populate slider on load
+window.addEventListener('load', () => {
+  const track = document.querySelector('.slider-track');
+  sliderImages.forEach(src => {
+    const img = document.createElement('img');
+    img.src = src;
+    img.className = 'slider-img';
+    track.appendChild(img);
   });
-}
-
-function prevSlide() {
-  currentIndex = (currentIndex - 1 + images.length) % images.length;
-  showSlide(currentIndex);
-}
-
-function nextSlide() {
-  currentIndex = (currentIndex + 1) % images.length;
-  showSlide(currentIndex);
-}
-
-// Initialize slider
-if (images.length > 0) showSlide(currentIndex);
+  updateSlider();
+  window.addEventListener('resize', updateSlider);
+});
 </script>
 
 </body>
