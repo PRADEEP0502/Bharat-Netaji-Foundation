@@ -142,3 +142,37 @@ footer {
   display: block;
   margin: 0 auto 10px;
 }
+#netaji-slider {
+  text-align: center;
+  padding: 50px 20px;
+  background: #f5f5f5;
+}
+
+.slider-container {
+  overflow: hidden;
+  max-width: 100%;
+  margin: 20px auto;
+}
+
+.slider-track {
+  display: flex;
+  gap: 20px;
+  animation: slide 30s linear infinite;
+}
+
+.slider-track img {
+  height: 200px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Animation to move left to right */
+@keyframes slide {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
