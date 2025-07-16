@@ -1,0 +1,107 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel - Team Update</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f9f9f9;
+    }
+    .container {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    input[type="text"], input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #2b4d91;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #1e3870;
+    }
+    .preview {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .preview img {
+      width: 120px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Update Team Member</h2>
+    <input type="text" id="name" placeholder="Enter Name" />
+    <input type="text" id="position" placeholder="Enter Position" />
+    <input type="file" id="photo" accept="image/*" />
+    <button onclick="saveTeam()">Save Details</button><div class="preview">
+  <h4>Preview</h4>
+  <img id="previewImg" src="" alt="Preview" />
+  <p id="previewName"></p>
+  <p id="previewPosition"></p>
+</div>
+
+  </div>  <script>
+    function saveTeam() {
+      const name = document.getElementById("name").value;
+      const position = document.getElementById("position").value;
+      const fileInput = document.getElementById("photo");
+
+      if (!name || !position || !fileInput.files[0]) {
+        alert("Please fill all fields and select a photo.");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const photoData = e.target.result;
+        localStorage.setItem("teamName", name);
+        localStorage.setItem("teamPosition", position);
+        localStorage.setItem("teamPhoto", photoData);
+
+        document.getElementById("previewImg").src = photoData;
+        document.getElementById("previewName").textContent = name;
+        document.getElementById("previewPosition").textContent = position;
+
+        alert("Team member updated successfully!");
+      };
+      reader.readAsDataURL(fileInput.files[0]);
+    }
+
+    // Load existing preview if available
+    window.onload = function () {
+      const photo = localStorage.getItem("teamPhoto");
+      const name = localStorage.getItem("teamName");
+      const position = localStorage.getItem("teamPosition");
+
+      if (photo && name && position) {
+        document.getElementById("previewImg").src = photo;
+        document.getElementById("previewName").textContent = name;
+        document.getElementById("previewPosition").textContent = position;
+      }
+    };
+  </script></body>
+</html>

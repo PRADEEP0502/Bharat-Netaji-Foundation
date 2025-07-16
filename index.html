@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,15 +6,30 @@
   <title>Bharat Netaji Foundation</title>
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+ 
 </head>
+
 <body>
   <header>
-    <nav class="navbar">
+  <nav class="navbar">
+    <div class="navbar-content">
       <div class="logo">
         <img src="images/Logo.png" alt="Logo" class="logo-img" />
-        Bharat Netaji Foundation
+        <span class="title">Bharat Netaji Foundation</span>
       </div>
-  </header>
+      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+      <ul id="navMenu" class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Our Work</a></li>
+        <li><a href="#team">Our Team</a></li>
+        <li><a href="#join">Join Us</a></li>
+        <li><a href="#netaji-slider">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+</header>
 
   <section id="home" class="hero">
     <div class="overlay"></div>
@@ -43,6 +57,27 @@
     <li>Creating a safe and encouraging environment for children and women.</li>
     <li>Celebrating Netaji Memorial Day, national events, and awareness observances.</li>
     <li>Building a New India – a strong and socially responsible young Bharat with self-reliance and unity.</li>
+  </ul>
+</section>
+
+<section id="focus" data-aos="fade-up">
+  <h2>Key Focus Areas</h2>
+  <ul>
+    <li>National unity and patriotism</li>
+    <li>Social welfare and public support</li>
+    <li>Consistent social engagement and activities</li>
+    <li>Motivating youth to join the armed forces</li>
+    <li>Workshops on patriotism and community service</li>
+    <li>Bringing awareness about government welfare schemes to rural areas</li>
+    <li>Sports competitions in the name of Netaji</li>
+    <li>Educational support including books and scholarships</li>
+    <li>Village development projects – Solar lights, sanitation, and healthcare</li>
+    <li>Netaji Awards – Recognition for outstanding social service</li>
+    <li>Netaji Library / Historical Archives collection drive</li>
+    <li>Free medical consultation & 25% assistance for police & army personnel</li>
+    <li>Free Silambam classes across all districts</li>
+    <li>Free ambulance service for the poor and unwell</li>
+    <li>Free funeral van for the underprivileged</li>
   </ul>
 </section>
 
@@ -94,22 +129,22 @@
   <section id="netaji-slider" data-aos="fade-up">
   <h2>Our Inspiration – Netaji</h2>
   <div class="slider-container">
-    <div class="slider-track">
+    <div class="slider-track" id="sliderTrack">
       <img src="images/netaji1.jpeg" alt="Netaji 1" />
       <img src="images/netaji2.jpeg" alt="Netaji 2" />
       <img src="images/netaji3.jpeg" alt="Netaji 3" />
       <img src="images/netaji4.jpeg" alt="Netaji 4" />
-            <img src="images/netaji5.jpeg" alt="Netaji 5" />
+      <img src="images/netaji5.jpeg" alt="Netaji 5" />
       <img src="images/netaji6.jpeg" alt="Netaji 6" />
-        <img src="images/Netaji 1.png" alt="Netaji 7" />
-       <img src="images/Netaji Subhash Chandra Bose.jpg" alt="Netaji 4" />
-             <img src="images/Netaji 2.png" alt="Netaji 6" />
-                          <img src="images/download (8).jpg" alt="Netaji 6" />
-
-
-
-
-      <!-- Add more Netaji images here -->
+      <img src="images/netaji7.jpeg" alt="Netaji 7" />
+      <img src="images/netaji8.jpeg" alt="Netaji 8" />
+      <img src="images/netaji9.jpeg" alt="Netaji 9" />
+      <img src="images/netaji10.jpeg" alt="Netaji 10" />
+      <!-- Add more images as needed -->
+    </div>
+    <div class="slider-controls">
+      <button onclick="prevSlide()">&#10094;</button>
+      <button onclick="nextSlide()">&#10095;</button>
     </div>
   </div>
 </section>
@@ -134,5 +169,65 @@
   <script src="js/script.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>AOS.init();</script>
+
+  <script>
+  function toggleMenu() {
+    document.getElementById("navMenu").classList.toggle("show");
+  }
+
+  let currentSlide = 0;
+const slides = document.querySelectorAll("#sliderTrack img");
+
+function showSlide(index) {
+  const totalSlides = slides.length;
+  if (index >= totalSlides) {
+    currentSlide = 0;
+  } else if (index < 0) {
+    currentSlide = totalSlides - 1;
+  } else {
+    currentSlide = index;
+  }
+
+  slides.forEach((slide, index) => {
+    slide.style.display = index === currentSlide ? "block" : "none";
+  });
+}
+
+function nextSlide() {
+  showSlide(currentSlide + 1);
+}
+
+function prevSlide() {
+  showSlide(currentSlide - 1);
+}
+
+// Initialize the slider by showing the first slide
+showSlide(currentSlide);
+
+  </script>
+  <script>
+let currentIndex = 0;
+const images = document.querySelectorAll('#sliderTrack img');
+
+function showSlide(index) {
+  images.forEach((img, i) => {
+    img.style.display = i === index ? 'block' : 'none';
+  });
+}
+
+function prevSlide() {
+  currentIndex = (currentIndex - 1 + images.length) % images.length;
+  showSlide(currentIndex);
+}
+
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % images.length;
+  showSlide(currentIndex);
+}
+
+// Initialize slider
+if (images.length > 0) showSlide(currentIndex);
+</script>
+
 </body>
 </html>
