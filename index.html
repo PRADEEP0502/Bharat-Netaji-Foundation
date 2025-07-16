@@ -6,56 +6,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bharat Netaji Foundation</title>
   <link rel="stylesheet" href="css/style.css" />
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
 </head>
 <body>
   <header>
     <nav class="navbar">
-      <div class="logo">Bharat Netaji Foundation</div>
-      
+      <div class="logo">
+        <img src="images/Logo.png" alt="Logo" class="logo-img" />
+        Bharat Netaji Foundation
+      </div>
   </header>
 
   <section id="home" class="hero">
     <div class="overlay"></div>
-    <div class="hero-content">
+    <div class="hero-content" data-aos="fade-down">
       <h1>Let’s unite with one vision</h1>
       <p>and stand like an unshakable rock.</p>
-      <a href="#join" class="btn">Join the Mission</a>
+      <a href="#join" class="btn" data-aos="zoom-in">Join the Mission</a>
     </div>
   </section>
 
-  <section id="about">
+  <section id="about" data-aos="fade-up">
     <h2>About Us</h2>
-    <p>Bharat Netaji Foundation is a non-profit organization committed to youth empowerment and national unity through education and service.</p>
+    <p>Bharat Netaji Foundation develops volunteers for social change, promoting leadership, engagement and social progress. Through structured development, capacity building and grassroots activities, volunteers lead sustainable social initiatives. Our mission: To connect you with local causes like education, health, sustainable development, youth leadership and inspire change. Join us to create a better tomorrow!</p>
   </section>
 
-  <section id="work">
-    <h2>Our Work</h2>
-    <ul>
-      <li>Youth Leadership Programs</li>
-      <li>Medical & Legal Awareness Camps</li>
-      <li>Rural Development & Education</li>
-    </ul>
-  </section>
+  <section id="work" data-aos="fade-left">
+  <h2>Our Work</h2>
+  <ul>
+    <li>Organizing awareness programs to increase public participation in social initiatives.</li>
+    <li>Establishing BNF volunteer units at the State, District, and Village levels to expand service reach.</li>
+    <li>Conducting Netaji Leadership Training Camps for the next generation youth.</li>
+    <li>Fostering a society that promotes patriotism and national unity.</li>
+    <li>Empowering youth to become nation-building leaders of tomorrow.</li>
+    <li>Enhancing the lives of the poor through education and social welfare.</li>
+    <li>Creating a safe and encouraging environment for children and women.</li>
+    <li>Celebrating Netaji Memorial Day, national events, and awareness observances.</li>
+    <li>Building a New India – a strong and socially responsible young Bharat with self-reliance and unity.</li>
+  </ul>
+</section>
 
   <section id="team">
-    <h2>Our Team</h2>
+    <h2 data-aos="fade-up">Our Team</h2>
     <div class="team-grid">
-      <div class="member"><h3>Founder & Chairman</h3><p>Mr. X</p></div>
-      <div class="member"><h3>Vice Chairman</h3><p>Mr. Y</p></div>
-      <div class="member"><h3>President</h3><p>Mr. Z</p></div>
-      <div class="member"><h3>Vice President</h3><p>Mr. A</p></div>
-      <div class="member"><h3>General Secretary</h3><p>Mr. B</p></div>
-      <div class="member"><h3>Joint Secretary</h3><p>Mr. C</p></div>
-      <div class="member"><h3>Treasurer</h3><p>Mr. D</p></div>
+      <div class="member" data-aos="flip-left">
+  <img src="images/founder.jpg" alt="Founder" class="team-photo" />
+  <h3>Mr. Hari</h3>
+  <p>Founder & Chairman</p>
+ </div>
+      <div class="member" data-aos="flip-left"><h3>Vice Chairman</h3><p>Mr. Y</p></div>
+      <div class="member" data-aos="flip-left"><h3>President</h3><p>Mr. Z</p></div>
+      <div class="member" data-aos="flip-left"><h3>Vice President</h3><p>Mr. A</p></div>
+      <div class="member" data-aos="flip-left"><h3>General Secretary</h3><p>Mr. B</p></div>
+      <div class="member" data-aos="flip-left"><h3>Joint Secretary</h3><p>Mr. C</p></div>
+      <div class="member" data-aos="flip-left"><h3>Treasurer</h3><p>Mr. D</p></div>
     </div>
   </section>
 
-  <section id="join">
+  <section id="join" data-aos="zoom-in">
     <h2>Join Us</h2>
     <a href="https://forms.gle/your-google-form-link" target="_blank" class="btn">Fill Google Form</a>
   </section>
 
-  <section id="contact">
+  <section id="contact" data-aos="fade-in">
     <h2>Contact</h2>
     <p>Email: bharatnetajifoundation@gmail.com</p>
     <p>Phone: +91 9489938729</p>
@@ -67,5 +80,7 @@
   </footer>
 
   <script src="js/script.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init();</script>
 </body>
 </html>

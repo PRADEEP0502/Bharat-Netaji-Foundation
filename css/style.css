@@ -16,6 +16,15 @@ body {
   top: 0;
   z-index: 10;
 }
+.logo {
+  display: flex;
+  align-items: center;
+}
+.logo-img {
+  height: 40px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
 .nav-links { list-style: none; display: flex; gap: 20px; }
 .nav-links a { color: white; text-decoration: none; }
 .hero {
@@ -72,4 +81,28 @@ footer {
   color: white;
   padding: 20px;
   text-align: center;
+}
+#work ul {
+  list-style-type: none;
+  padding: 0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+#work ul li {
+  margin: 10px 0;
+  padding: 10px 15px;
+  background-color: #e3e8ff;        /* Light blue background */
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-size: 1.05rem;
+  color: #0f1114;                   /* Dark blue text */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#work ul li:hover {
+  transform: scale(1.03);
+  background-color: #c1d1ff;        /* Slightly darker on hover */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  cursor: pointer;
 }
