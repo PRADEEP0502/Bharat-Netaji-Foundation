@@ -114,9 +114,10 @@ footer {
 .team-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;     /* ⭐ Centers the cards */
+  justify-content: center;    /* ✅ Center all team cards in the row */
   gap: 30px;
-  margin-top: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 .member {
@@ -124,7 +125,7 @@ footer {
   padding: 20px;
   border-radius: 12px;
   width: 220px;
-  text-align: center;
+  text-align: center;         /* ✅ Center content inside each card */
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
 }
@@ -138,5 +139,6 @@ footer {
   height: 220px;
   object-fit: cover;
   border-radius: 10px;
-  margin-bottom: 10px;
+  display: block;
+  margin: 0 auto 10px;
 }
