@@ -6,33 +6,67 @@
   <title>Bharat Netaji Foundation</title>
   <link rel="stylesheet" href="css/style.css" />
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
- 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 
-<body>
-  <header>
-  <nav class="navbar">
-    <div class="navbar-content">
-      <div class="logo">
-        <img src="images/Logo.png" alt="Logo" class="logo-img" />
-        <span class="title">Bharat Netaji Foundation</span>
-      </div>
+<body class="with-sidebar">
 
-      <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
-      <ul id="navMenu" class="nav-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#work">Our Work</a></li>
-        <li><a href="#team">Our Team</a></li>
-        <li><a href="#join">Join Us</a></li>
-        <li><a href="#netaji-slider">Gallery</a></li>
-        <li><a href="#contact">Contact</a></li>
-        <li><a href="#donation">Donation</a></li>
-      </ul>
+<header>
+  <div class="navbar-content">
+    <div class="logo">
+      <img src="images/Logo.png" alt="Logo" class="logo-img" />
+      <span class="title">Bharat Netaji Foundation</span>
     </div>
-  </nav>
+  </div>
 </header>
+
+<!-- Sidebar Navigation with open/close feature on right side -->
+<div class="sidebar" id="sidebar">
+  <div class="sidebar-logo">
+    <img src="images/Logo.png" alt="Logo" />
+    <button class="sidebar-close" onclick="closeSidebar()"><i class="fas fa-times"></i></button>
+  </div>
+  <ul class="sidebar-nav">
+    <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+    <li><a href="#about"><i class="fas fa-info-circle"></i> Who we are</a></li>
+    <li><a href="#work"><i class="fas fa-briefcase"></i> What we do</a></li>
+    <li><a href="#focus"><i class="fas fa-bullseye"></i> Vision</a></li>
+    <li><a href="#team"><i class="fas fa-users"></i> Our Team</a></li>
+    <li><a href="#join"><i class="fas fa-user-plus"></i> Join Us</a></li>
+    <li><a href="#netaji-slider"><i class="fas fa-images"></i> Gallery</a></li>
+    <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+    <li><a href="#donation"><i class="fas fa-hand-holding-heart"></i> Donation</a></li>
+  </ul>
+</div>
+<!-- Sidebar open button on right -->
+<button class="sidebar-open" id="sidebarOpenBtn" onclick="openSidebar()"><i class="fas fa-bars"></i></button>
+<script>
+function toggleSidebarSection(id) {
+  var el = document.getElementById(id);
+  if (el.style.display === "none" || el.style.display === "") {
+    el.style.display = "block";
+  } else {
+    el.style.display = "none";
+  }
+}
+function closeSidebar() {
+  document.getElementById('sidebar').style.display = 'none';
+  document.body.classList.remove('with-sidebar');
+  document.getElementById('sidebarOpenBtn').style.display = 'block';
+}
+function openSidebar() {
+  document.getElementById('sidebar').style.display = 'flex';
+  document.body.classList.add('with-sidebar');
+  document.getElementById('sidebarOpenBtn').style.display = 'none';
+}
+// Auto-close sidebar on link click (for single page navigation)
+document.querySelectorAll('.sidebar-nav a').forEach(function(link) {
+  link.addEventListener('click', function() {
+    closeSidebar();
+  });
+});
+</script>
+
   <section id="home" class="hero">
     <div class="overlay"></div>
     <div class="hero-content" data-aos="fade-down">
@@ -44,12 +78,29 @@
   </section>
 
   <section id="about" data-aos="fade-up">
-    <h2>About Us</h2>
-    <p>Bharat Netaji Foundation develops volunteers for social change, promoting leadership, engagement and social progress. Through structured development, capacity building and grassroots activities, volunteers lead sustainable social initiatives. Our mission: To connect you with local causes like education, health, sustainable development, youth leadership and inspire change. Join us to create a better tomorrow!</p>
+    <h2 data-aos="zoom-in">Who we are</h2>
+    <div class="about-animated" data-aos="fade-up" data-aos-delay="200">
+      <p>Bharat Netaji Foundation develops volunteers for social change, promoting leadership, engagement and social progress. Through structured development, capacity building and grassroots activities, volunteers lead sustainable social initiatives. Our mission: To connect you with local causes like education, health, sustainable development, youth leadership and inspire change. Join us to create a better tomorrow!</p>
+      <div class="about-counters">
+        <div class="counter-box" data-count="500+">
+          <span class="counter" id="volunteers">0</span>
+          <span class="counter-label">Volunteers</span>
+        </div>
+        <div class="counter-box" data-count="100+">
+          <span class="counter" id="projects">0</span>
+          <span class="counter-label">Projects</span>
+        </div>
+        <div class="counter-box" data-count="50+">
+          <span class="counter" id="events">0</span>
+          <span class="coun
+          abel">Events</span>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section id="work" data-aos="fade-left">
-  <h2>Our Work</h2>
+  <h2>What we do</h2>
   <ul>
     <li>Organizing awareness programs to increase public participation in social initiatives.</li>
     <li>Establishing BNF volunteer units at the State, District, and Village levels to expand service reach.</li>
@@ -147,7 +198,7 @@
   <div class="contact-box">
     <p><strong>Address:</strong><br />
     No. 283/2, 60 Feet Road, GH Arch Near,<br />
-    TSK Nagar, Charapuramasan,<br />
+    TSK Nagar, Dharapuram,<br />
     Tiruppur - 641604</p>
 
     <p><strong>Phone:</strong><br />
@@ -188,7 +239,51 @@
     });
   });
 
-// Image Slider Logic
+// Animated Counters for Who we are
+function animateCounter(id, endValue, duration = 1500) {
+  const el = document.getElementById(id);
+  let start = 0;
+  let timer;
+  function runAnimation() {
+    clearInterval(timer);
+    start = 0;
+    timer = setInterval(() => {
+      start++;
+      el.textContent = start;
+      if (start >= endValue) {
+        el.textContent = endValue + '+';
+        clearInterval(timer);
+      }
+    }, Math.max(Math.floor(duration / endValue), 10));
+  }
+  runAnimation();
+}
+
+let countersAnimated = false;
+function checkAboutInView() {
+  const aboutSection = document.querySelector('.about-animated');
+  if (!aboutSection) return;
+  const rect = aboutSection.getBoundingClientRect();
+  if (rect.top < window.innerHeight && rect.bottom > 0) {
+    if (!countersAnimated) {
+      animateCounter('volunteers', 500);
+      animateCounter('projects', 100);
+      animateCounter('events', 50);
+      countersAnimated = true;
+    }
+  } else {
+    countersAnimated = false;
+    document.getElementById('volunteers').textContent = '0';
+    document.getElementById('projects').textContent = '0';
+    document.getElementById('events').textContent = '0';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  window.addEventListener('scroll', checkAboutInView);
+  checkAboutInView();
+});
+
 const sliderImages = [
   "images/netaji1.jpeg",
   "images/netaji2.jpeg",
