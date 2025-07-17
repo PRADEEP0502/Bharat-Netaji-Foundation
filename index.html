@@ -67,6 +67,7 @@ document.querySelectorAll('.sidebar-nav a').forEach(function(link) {
 });
 </script>
 
+
   <section id="home" class="hero">
     <div class="overlay"></div>
     <div class="hero-content" data-aos="fade-down">
@@ -209,10 +210,27 @@ document.querySelectorAll('.sidebar-nav a').forEach(function(link) {
     </div>
   </div>
 </section>
-  <section id="join" data-aos="zoom-in">
-    <h2>Join Us</h2>
-    <a href="https://forms.gle/your-google-form-link" target="_blank" class="btn">Fill Google Form</a>
-  </section>
+
+ <section id="join">
+  <h2>Join Us</h2>
+  <p class="join-tagline">Join Us Be The Change. Shape The Nation</p>
+  <button class="btn" onclick="openForm()">Fill Here</button>
+
+  <!-- Modal Form -->
+  <div id="formModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeForm()">&times;</span>
+      <form id="customForm" onsubmit="submitToGoogleForm(event)">
+        <h3>Join the Mission</h3>
+        <input type="text" name="name" id="name" placeholder="Your Name" required />
+        <input type="email" name="email" id="email" placeholder="Your Email" required />
+        <input type="tel" name="phone" id="phone" placeholder="Your Phone" required />
+        <button type="submit" class="btn">Submit</button>
+      </form>
+      <p id="successMsg" style="display:none; color: green; margin-top: 10px;">Submitted Successfully ✅</p>
+    </div>
+  </div>
+</section>
 
  <section id="netaji-slider" data-aos="fade-up">
   <h2>Our Inspiration – Netaji</h2>
@@ -257,6 +275,7 @@ document.querySelectorAll('.sidebar-nav a').forEach(function(link) {
   </div>
 </section>
 
+
   <section id="contact" data-aos="fade-in">
   <h2>Contact Us</h2>
   <div class="contact-box">
@@ -284,7 +303,7 @@ document.querySelectorAll('.sidebar-nav a').forEach(function(link) {
     <p><strong>Account Name:</strong> Bharat Netaji Foundation</p>
   </div>
 
-  <p class="thank-you">Thank you for your generous support! 🙏</p>
+  <p class="thank-you">"United, we grow. Together, we work. In the spirit of Netaji, we march forward forever!"</p>
 </section>
 
   <script src="js/script.js"></script>
@@ -411,6 +430,52 @@ document.querySelectorAll('.member').forEach(function(member) {
   member.addEventListener('touchstart', triggerHighlight);
   member.addEventListener('touchend', removeHighlight);
 });
+</script>
+<script>
+  function revealSlogan() {
+    const line2 = document.getElementById("slogan-line-2");
+    line2.classList.toggle("revealed");
+  }
+</script>
+<script>
+function openForm() {
+  document.getElementById("formModal").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("formModal").style.display = "none";
+}
+
+window.onclick = function(event) {
+  const modal = document.getElementById("formModal");
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+// Submit to Google Form
+function submitToGoogleForm(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const phone = document.getElementById("phone").value;
+
+  const formURL = "https://docs.google.com/forms/d/e/1FAIpQLSd61XVVFVLmqOn2QctTts3LNAcgFMYZH2PNCDYJMlVIEhc8mw/viewform?usp=header";
+  const data = new FormData();
+  data.append("entry.1111111111", name);
+  data.append("entry.2222222222", email);
+  data.append("entry.3333333333", phone);
+
+  fetch(formURL, {
+    method: "POST",
+    mode: "no-cors",
+    body: data,
+  }).then(() => {
+    document.getElementById("successMsg").style.display = "block";
+    document.getElementById("customForm").reset();
+  });
+}
 </script>
 
 </body>

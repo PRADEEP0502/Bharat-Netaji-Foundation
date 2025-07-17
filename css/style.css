@@ -153,6 +153,11 @@ a {
   padding: 100px 20px 60px;
   background: url('../images/bg.jpg') no-repeat center center / cover;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding:100px 20x;
 }
 
 .overlay {
@@ -314,10 +319,16 @@ a {
 
 /* Arrows */
 .slider-controls {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
   display: flex;
-  justify-content: center;
-  margin-top: 15px;
-  gap: 20px;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  padding: 0 20px;
+  z-index: 10;
+  
 }
 
 .slider-controls button {
@@ -334,6 +345,7 @@ a {
 .slider-controls button:hover {
   background-color: #0e3a91;
 }
+
 
 /* ==== Contact Box ==== */
 #contact {
@@ -697,7 +709,7 @@ header {
 
 .focus-left li:hover,
 .focus-right li:hover {
-  background-color: #d4e7ff;
+  background-color: #ffffff;
   transform: scale(1.03);
   cursor: pointer;
 }
@@ -712,4 +724,98 @@ header {
   .focus-left, .focus-right {
     max-width: 100%;
   }
+}
+.join-slogan {
+  background: #f0f4ff;
+  padding: 60px 20px 40px;
+  text-align: center;
+}
+
+.join-slogan h2 {
+  font-size: 28px;
+  color: #002D72;
+  margin-bottom: 10px;
+}
+
+.join-slogan p {
+  font-size: 20px;
+  color: #333;
+  font-weight: 500;
+}
+.animate-text {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  animation: fadeZoom 1.2s ease-out forwards;
+}
+
+.join-slogan h2 .animate-text {
+  animation-delay: 0.2s;
+}
+
+.join-slogan p .animate-text {
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeZoom {
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+/* Modal Styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  padding-top: 50px;
+}
+
+.modal-content {
+  background: #fff;
+  margin: auto;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #002D72;
+  cursor: pointer;
+}
+
+form input {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #aaa;
+  border-radius: 6px;
+}
+
+form .btn {
+  width: 100%;
+  background: #002D72;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 6px;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+form .btn:hover {
+  background: #0e3a91;
 }
